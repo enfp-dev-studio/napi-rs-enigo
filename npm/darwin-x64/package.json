@@ -1,5 +1,5 @@
 {
-  "name": "@enfp-dev-studio/napi-rs-enigo-darwin-x64",
+  "name": "@enfpdev/napi-rs-enigo-darwin-x64",
   "version": "1.1.1",
   "os": [
     "darwin"

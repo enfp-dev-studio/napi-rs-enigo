@@ -1,3 +1,3 @@
-# `@enfp-dev-studio/napi-rs-enigo-android-arm-eabi`
+# `@enfpdev/napi-rs-enigo-android-arm-eabi`
 
-This is the **armv7-linux-androideabi** binary for `@enfp-dev-studio/napi-rs-enigo`
+This is the **armv7-linux-androideabi** binary for `@enfpdev/napi-rs-enigo`

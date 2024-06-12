@@ -84,9 +84,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@enfp-dev-studio/napi-rs-enigo@workspace:.":
+"@enfpdev/napi-rs-enigo@workspace:.":
   version: 0.0.0-use.local
-  resolution: "@enfp-dev-studio/napi-rs-enigo@workspace:."
+  resolution: "@enfpdev/napi-rs-enigo@workspace:."
   dependencies:
     "@napi-rs/cli": "npm:^2.16.4"
     "@swc-node/register": "npm:^1.6.8"

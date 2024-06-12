@@ -1,5 +1,5 @@
 {
-  "name": "@enfp-dev-studio/napi-rs-enigo-android-arm-eabi",
+  "name": "@enfpdev/napi-rs-enigo-android-arm-eabi",
   "version": "1.1.1",
   "os": [
     "android"

@@ -1,3 +1,3 @@
-# `@enfp-dev-studio/napi-rs-enigo-linux-x64-gnu`
+# `@enfpdev/napi-rs-enigo-linux-x64-gnu`
 
-This is the **x86_64-unknown-linux-gnu** binary for `@enfp-dev-studio/napi-rs-enigo`
+This is the **x86_64-unknown-linux-gnu** binary for `@enfpdev/napi-rs-enigo`

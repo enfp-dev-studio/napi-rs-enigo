@@ -1,9 +1,9 @@
 {
-  "name": "napi-rs-enigo",
+  "name": "@enfp-dev-studio/napi-rs-enigo",
   "version": "1.1.0",
   "description": "Template project for writing node package with napi-rs",
   "main": "index.js",
-  "repository": "git@https://github.com/enfp-dev-studio/napi-rs-enigo",
+  "repository": "git@github.com/enfp-dev-studio/napi-rs-enigo",
   "license": "MIT",
   "keywords": [
     "napi-rs",

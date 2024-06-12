@@ -22,8 +22,7 @@
     "triples": {
       "defaults": true,
       "additional": [
-        "aarch64-apple-darwin",
-        "aarch64-pc-windows-msvc"
+        "aarch64-apple-darwin"
       ]
     }
   },
@@ -104,7 +103,6 @@
     "@enfpdev/napi-rs-enigo-win32-x64-msvc": "1.1.1",
     "@enfpdev/napi-rs-enigo-darwin-x64": "1.1.1",
     "@enfpdev/napi-rs-enigo-linux-x64-gnu": "1.1.1",
-    "@enfpdev/napi-rs-enigo-darwin-arm64": "1.1.1",
-    "@enfpdev/napi-rs-enigo-win32-arm64-msvc": "1.1.1"
+    "@enfpdev/napi-rs-enigo-darwin-arm64": "1.1.1"
   }
 }

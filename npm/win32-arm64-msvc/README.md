@@ -1,3 +1,0 @@
-# `@enfpdev/napi-rs-enigo-win32-arm64-msvc`
-
-This is the **aarch64-pc-windows-msvc** binary for `@enfpdev/napi-rs-enigo`

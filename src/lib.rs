@@ -14,19 +14,19 @@ use enigo::{
 // use std::time::Duration;
 
 #[napi]
-fn move_mouse_rel(x: i32, y: i32) -> () {
+fn move_mouse_rel(x: i32, y: i32) {
   let mut enigo = Enigo::new(&Settings::default()).unwrap();
   let _ = enigo.move_mouse(x, y, Rel);
 }
 
 #[napi]
-fn move_mouse_abs(x: i32, y: i32) -> () {
+fn move_mouse_abs(x: i32, y: i32) {
   let mut enigo = Enigo::new(&Settings::default()).unwrap();
   let _ = enigo.move_mouse(x, y, Abs);
 }
 
 #[napi]
-fn mouse_click(button: String) -> i32 {
+fn mouse_click(button: String) {
   // let wait_time = Duration::from_secs(2);
   // // let mut enigo = Enigo::new(&Settings::default()).unwrap();
 
@@ -74,11 +74,10 @@ fn mouse_click(button: String) -> i32 {
     let _ = enigo.button(Button::Middle, Click);
   } else {
   }
-  return enigo.location().unwrap().0 as i32;
 }
 
 #[napi]
-fn mouse_down(button: String) -> () {
+fn mouse_down(button: String) {
   let mut enigo = Enigo::new(&Settings::default()).unwrap();
 
   if button == "left" {
@@ -91,7 +90,7 @@ fn mouse_down(button: String) -> () {
 }
 
 #[napi]
-fn mouse_up(button: String) -> () {
+fn mouse_up(button: String) {
   let mut enigo = Enigo::new(&Settings::default()).unwrap();
 
   if button == "left" {
@@ -104,7 +103,7 @@ fn mouse_up(button: String) -> () {
 }
 
 #[napi]
-fn mouse_scroll(length: i32, is_vertical: bool) -> () {
+fn mouse_scroll(length: i32, is_vertical: bool) {
   let mut enigo = Enigo::new(&Settings::default()).unwrap();
 
   if is_vertical {

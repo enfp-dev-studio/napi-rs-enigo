@@ -20,9 +20,11 @@
   "napi": {
     "name": "napi-rs-enigo",
     "triples": {
-      "defaults": true,
+      "defaults": false,
       "additional": [
-        "aarch64-apple-darwin"
+        "aarch64-apple-darwin",
+        "x86_64-apple-darwin",
+        "x86_64-pc-windows-msvc"
       ]
     }
   },
@@ -101,9 +103,8 @@
   },
   "packageManager": "yarn@4.3.0",
   "optionalDependencies": {
-    "@enfpdev/napi-rs-enigo-win32-x64-msvc": "1.1.2",
+    "@enfpdev/napi-rs-enigo-darwin-arm64": "1.1.2",
     "@enfpdev/napi-rs-enigo-darwin-x64": "1.1.2",
-    "@enfpdev/napi-rs-enigo-linux-x64-gnu": "1.1.2",
-    "@enfpdev/napi-rs-enigo-darwin-arm64": "1.1.2"
+    "@enfpdev/napi-rs-enigo-win32-x64-msvc": "1.1.2"
   }
 }

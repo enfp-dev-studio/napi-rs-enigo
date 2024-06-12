@@ -72,7 +72,6 @@ fn mouse_click(button: String) {
     let _ = enigo.button(Button::Right, Click);
   } else if button == "middle" {
     let _ = enigo.button(Button::Middle, Click);
-  } else {
   }
 }
 

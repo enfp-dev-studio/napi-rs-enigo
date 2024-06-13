@@ -1,3 +1,7 @@
 [target.aarch64-unknown-linux-musl]
 linker = "aarch64-linux-musl-gcc"
 rustflags = ["-C", "target-feature=-crt-static"]
+
+https://github.com/napi-rs/napi-rs/issues/1341#issuecomment-1370763728
+[target.x86_64-pc-windows-msvc]
+rustflags = ["-C", "target-feature=+crt-static"]

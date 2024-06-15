@@ -17,7 +17,7 @@ A Node.js wrapper for the Enigo Rust library, providing a native interface for s
 Use npm to install the library:
 
 ```shell
-yarn add @enfp-dev-studio/napi-rs-enigo
+yarn add @enfpdev/napi-rs-enigo
 ```
 
 ## Usage

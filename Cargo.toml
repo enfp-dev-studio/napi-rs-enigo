@@ -10,9 +10,9 @@ version = "0.1.0"
 crate-type = ["cdylib"]
 
 [dependencies]
+enigo       = "0.2.1"
 napi        = "2"
 napi-derive = "2"
-enigo = "0.2.1"
 
 [build-dependencies]
 napi-build = "2"

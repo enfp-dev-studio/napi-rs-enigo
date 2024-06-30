@@ -1,15 +1,12 @@
 {
-  "name": "@enfpdev/napi-rs-enigo-win32-x64-msvc",
+  "name": "@enfpdev/napi-rs-enigo-darwin-universal",
   "version": "1.1.5",
   "os": [
-    "win32"
+    "darwin"
   ],
-  "cpu": [
-    "x64"
-  ],
-  "main": "napi-rs-enigo.win32-x64-msvc.node",
+  "main": "napi-rs-enigo.darwin-universal.node",
   "files": [
-    "napi-rs-enigo.win32-x64-msvc.node"
+    "napi-rs-enigo.darwin-universal.node"
   ],
   "description": "Template project for writing node package with napi-rs",
   "keywords": [

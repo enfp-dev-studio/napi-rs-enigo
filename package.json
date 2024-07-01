@@ -103,5 +103,12 @@
     "singleQuote": true,
     "arrowParens": "always"
   },
-  "packageManager": "yarn@4.3.0"
+  "packageManager": "yarn@4.3.0",
+  "optionalDependencies": {
+    "@enfpdev/napi-rs-enigo-darwin-arm64": "1.1.6",
+    "@enfpdev/napi-rs-enigo-darwin-x64": "1.1.6",
+    "@enfpdev/napi-rs-enigo-darwin-universal": "1.1.6",
+    "@enfpdev/napi-rs-enigo-win32-x64-msvc": "1.1.6",
+    "@enfpdev/napi-rs-enigo-win32-x64-gnu": "1.1.6"
+  }
 }

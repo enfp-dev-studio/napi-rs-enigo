@@ -42,7 +42,7 @@ jobs:
             architecture: x64
             target: x86_64-pc-windows-gnu
             build: yarn build --target x86_64-pc-windows-gnu
-    name: stable - ${{ matrix.settings.target }} - node@18
+    name: stable - ${{ matrix.settings.target }} - node@20
     runs-on: ${{ matrix.settings.host }}
     steps:
       - uses: actions/checkout@v4

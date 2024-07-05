@@ -91,7 +91,7 @@ jobs:
       - name: Install dependencies
         run: yarn install
       - name: Install X11 dependencies for linux
-        run: docker run sudo apt-get update && sudo apt-get install -y libx11-dev
+        run: docker run --rm ubuntu:latest sh -c "apt-get update && apt-get install -y libx11-dev"
         if: matrix.settings.target == 'x86_64-unknown-linux-gnu' || matrix.settings.target == 'aarch64-unknown-linux-gnu'
       - name: Setup node x86
         uses: actions/setup-node@v4

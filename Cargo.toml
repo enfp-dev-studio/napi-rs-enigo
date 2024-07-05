@@ -10,7 +10,7 @@ version = "0.1.0"
 crate-type = ["cdylib"]
 
 [dependencies]
-enigo       = "0.2.1"
+enigo       = { version = "0.2.1", features = ["x11rb"] }
 napi        = "2"
 napi-derive = "2"
 

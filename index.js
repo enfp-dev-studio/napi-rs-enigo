@@ -62,16 +62,6 @@ switch (platform) {
   case 'win32':
     switch (arch) {
       case 'x64':
-        localFileExisted = existsSync(join(__dirname, 'napi-rs-enigo.win32-x64-gnu.node'))
-        try {
-          if (localFileExisted) {
-            nativeBinding = require('./napi-rs-enigo.win32-x64-gnu.node')
-          } else {
-            nativeBinding = require('@enfpdev/napi-rs-enigo-win32-x64-gnu')
-          }
-          break
-        } catch {}
-
         localFileExisted = existsSync(join(__dirname, 'napi-rs-enigo.win32-x64-msvc.node'))
         try {
           if (localFileExisted) {

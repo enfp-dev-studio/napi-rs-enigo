@@ -44,17 +44,11 @@ jobs:
             build: yarn build --target x86_64-pc-windows-gnu
           - host: ubuntu-latest
             target: x86_64-unknown-linux-gnu
-            docker: ghcr.io/napi-rs/napi-rs/nodejs-rust:lts-debianxs
-            inputs: |
-              apt-get update
-              apt-get install -y libxdo-dev
+            docker: ghcr.io/napi-rs/napi-rs/nodejs-rust:lts-debian
             build: yarn build --target x86_64-unknown-linux-gnu
           - host: ubuntu-latest
             target: aarch64-unknown-linux-gnu
             docker: ghcr.io/napi-rs/napi-rs/nodejs-rust:lts-debian-aarch64
-            inputs: |
-              apt-get update
-              apt-get install -y libxdo-dev
             build: yarn build --target aarch64-unknown-linux-gnu
     name: stable - ${{ matrix.settings.target }} - node@20
     runs-on: ${{ matrix.settings.host }}
@@ -97,9 +91,7 @@ jobs:
       - name: Install dependencies
         run: yarn install
       - name: Install X11 dependencies for linux
-        run: |
-          sudo apt-get update
-          sudo apt-get install libxdo-dev -y
+        run: docker run sudo apt-get update && sudo apt-get install -y libx11-dev
         if: matrix.settings.target == 'x86_64-unknown-linux-gnu' || matrix.settings.target == 'aarch64-unknown-linux-gnu'
       - name: Setup node x86
         uses: actions/setup-node@v4

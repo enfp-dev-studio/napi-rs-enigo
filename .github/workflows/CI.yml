@@ -90,6 +90,11 @@ jobs:
         shell: bash
       - name: Install dependencies
         run: yarn install
+      - name: Install X11 dependencies for linux
+        run: |
+          sudo apt-get update
+          sudo apt-get install libxdo-dev -y
+        if: matrix.settings.target == 'x86_64-unknown-linux-gnu' || matrix.settings.target == 'aarch64-unknown-linux-gnu'
       - name: Setup node x86
         uses: actions/setup-node@v4
         if: matrix.settings.target == 'i686-pc-windows-msvc'
@@ -191,7 +196,7 @@ jobs:
         shell: bash
       - name: Test bindings
         run: yarn test
-# build-freebsd:
+  # build-freebsd:
   #   runs-on: macos-13
   #   name: Build FreeBSD
   #   steps:

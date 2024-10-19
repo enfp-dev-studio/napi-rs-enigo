@@ -1,6 +1,6 @@
 {
   "name": "@enfpdev/napi-rs-enigo-darwin-universal",
-  "version": "1.1.10",
+  "version": "1.1.11",
   "os": [
     "darwin"
   ],

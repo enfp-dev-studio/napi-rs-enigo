@@ -1,6 +1,6 @@
 {
   "name": "@enfpdev/napi-rs-enigo-darwin-arm64",
-  "version": "1.1.14",
+  "version": "1.1.15",
   "os": [
     "darwin"
   ],

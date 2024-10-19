@@ -104,9 +104,9 @@
   },
   "packageManager": "yarn@4.3.0",
   "optionalDependencies": {
-    "@enfpdev/napi-rs-enigo-darwin-arm64": "1.1.10",
-    "@enfpdev/napi-rs-enigo-darwin-x64": "1.1.10",
-    "@enfpdev/napi-rs-enigo-darwin-universal": "1.1.10",
-    "@enfpdev/napi-rs-enigo-win32-x64-gnu": "1.1.10"
+    "@enfpdev/napi-rs-enigo-darwin-arm64": "1.1.11",
+    "@enfpdev/napi-rs-enigo-darwin-x64": "1.1.11",
+    "@enfpdev/napi-rs-enigo-darwin-universal": "1.1.11",
+    "@enfpdev/napi-rs-enigo-win32-x64-gnu": "1.1.11"
   }
 }

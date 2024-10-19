@@ -62,41 +62,41 @@ switch (platform) {
   case 'win32':
     switch (arch) {
       case 'x64':
-        localFileExisted = existsSync(join(__dirname, 'napi-rs-enigo.win32-x64-msvc.node'))
+        localFileExisted = existsSync(join(__dirname, 'napi-rs-enigo.win32-x64-gnu.node'))
         try {
           if (localFileExisted) {
-            nativeBinding = require('./napi-rs-enigo.win32-x64-msvc.node')
+            nativeBinding = require('./napi-rs-enigo.win32-x64-gnu.node')
           } else {
-            nativeBinding = require('@enfpdev/napi-rs-enigo-win32-x64-msvc')
+            nativeBinding = require('@enfpdev/napi-rs-enigo-win32-x64-gnu')
           }
         } catch (e) {
           loadError = e
         }
         break
-      case 'ia32':
-        localFileExisted = existsSync(join(__dirname, 'napi-rs-enigo.win32-ia32-msvc.node'))
-        try {
-          if (localFileExisted) {
-            nativeBinding = require('./napi-rs-enigo.win32-ia32-msvc.node')
-          } else {
-            nativeBinding = require('@enfpdev/napi-rs-enigo-win32-ia32-msvc')
-          }
-        } catch (e) {
-          loadError = e
-        }
-        break
-      case 'arm64':
-        localFileExisted = existsSync(join(__dirname, 'napi-rs-enigo.win32-arm64-msvc.node'))
-        try {
-          if (localFileExisted) {
-            nativeBinding = require('./napi-rs-enigo.win32-arm64-msvc.node')
-          } else {
-            nativeBinding = require('@enfpdev/napi-rs-enigo-win32-arm64-msvc')
-          }
-        } catch (e) {
-          loadError = e
-        }
-        break
+      // case 'ia32':
+      //   localFileExisted = existsSync(join(__dirname, 'napi-rs-enigo.win32-ia32-msvc.node'))
+      //   try {
+      //     if (localFileExisted) {
+      //       nativeBinding = require('./napi-rs-enigo.win32-ia32-msvc.node')
+      //     } else {
+      //       nativeBinding = require('@enfpdev/napi-rs-enigo-win32-ia32-msvc')
+      //     }
+      //   } catch (e) {
+      //     loadError = e
+      //   }
+      //   break
+      // case 'arm64':
+      //   localFileExisted = existsSync(join(__dirname, 'napi-rs-enigo.win32-arm64-msvc.node'))
+      //   try {
+      //     if (localFileExisted) {
+      //       nativeBinding = require('./napi-rs-enigo.win32-arm64-msvc.node')
+      //     } else {
+      //       nativeBinding = require('@enfpdev/napi-rs-enigo-win32-arm64-msvc')
+      //     }
+      //   } catch (e) {
+      //     loadError = e
+      //   }
+      //   break
       default:
         throw new Error(`Unsupported architecture on Windows: ${arch}`)
     }

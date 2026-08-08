@@ -33,16 +33,13 @@ jobs:
             build: yarn build --target x86_64-apple-darwin
           - host: windows-latest
             architecture: x64
-            target: x86_64-pc-windows-gnu
-            build: yarn build --target x86_64-pc-windows-gnu
+            target: x86_64-pc-windows-msvc
+            build: yarn build --target x86_64-pc-windows-msvc
           - host: macos-latest
             architecture: x64
             target: aarch64-apple-darwin
             build: yarn build --target aarch64-apple-darwin
-          # - host: windows-latest
-          #   build: yarn build --target x86_64-pc-windows-msvc
-          #   target: x86_64-pc-windows-msvc
-    name: stable - ${{ matrix.settings.target }} - node@20
+    name: stable - ${{ matrix.settings.target }} - node@24
     runs-on: ${{ matrix.settings.host }}
     steps:
       - uses: actions/checkout@v4
@@ -50,7 +47,7 @@ jobs:
         uses: actions/setup-node@v4
         if: ${{ !matrix.settings.docker }}
         with:
-          node-version: 20
+          node-version: 24
           cache: yarn
       - name: Install
         uses: dtolnay/rust-toolchain@stable
@@ -89,7 +86,7 @@ jobs:
         uses: actions/setup-node@v4
         if: matrix.settings.target == 'i686-pc-windows-msvc'
         with:
-          node-version: 20
+          node-version: 24
           cache: yarn
           architecture: x86
       - name: Build in docker
@@ -119,7 +116,7 @@ jobs:
       - name: Setup node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 24
           cache: yarn
           architecture: arm64
       - name: Install dependencies
@@ -154,8 +151,7 @@ jobs:
       matrix:
         settings:
           - host: windows-latest
-            # target: x86_64-pc-windows-msvc
-            target: x86_64-pc-windows-gnu
+            target: x86_64-pc-windows-msvc
             architecture: x64
           - host: macos-latest
             target: aarch64-apple-darwin
@@ -418,7 +414,7 @@ jobs:
       - name: Setup node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 24
           cache: yarn
       - name: Install dependencies
         run: yarn install

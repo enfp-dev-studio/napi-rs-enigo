@@ -132,7 +132,7 @@ jobs:
           name: bindings-aarch64-apple-darwin
           path: artifacts
       - name: Combine binaries
-        run: yarn napi universalize
+        run: yarn napi universalize --output-dir artifacts
       - name: List packages
         run: ls -R ./npm
         shell: bash
@@ -140,7 +140,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: bindings-universal-apple-darwin
-          path: ${{ env.APP_NAME }}.darwin-universal.node
+          path: artifacts/${{ env.APP_NAME }}.darwin-universal.node
           if-no-files-found: error
   test-macOS-windows-binding:
     name: Test bindings on ${{ matrix.settings.target }} - node@${{ matrix.node }}

@@ -11,11 +11,11 @@ crate-type = ["cdylib"]
 
 [dependencies]
 enigo       = { version = "0.2.1", features = ["x11rb"] }
-napi        = "2"
-napi-derive = "2"
+napi        = "3"
+napi-derive = "3"
 
 [build-dependencies]
-napi-build = "2"
+napi-build = "2.4.0"
 
 [profile.release]
 lto = true

@@ -1,25 +1,36 @@
 import test from 'ava'
 
-import { moveMouseRel, moveMouseAbs, mouseClick, mouseDown, mouseUp, mouseScroll } from '../index'
+import { Enigo, Key, MouseButton, Direction, Coordinate, Axis } from '../index'
 
-test('sync function from native code', (t) => {
-  const x = 100
-  const y = 100
-  const button = 'right'
-  const length = 100
-  const isVertical = true
+test('mouse and keyboard events via a persistent Enigo instance', (t) => {
+  const enigo = new Enigo()
 
-  // console.log(moveMouseRel(x, y))
-  // console.log(moveMouseAbs(x, y))
-  // console.log(mouseClick(button))
-  // console.log(mouseDown(button))
-  // console.log(mouseUp(button))
-  // console.log(mouseScroll(length, isVertical))
+  t.is(enigo.moveMouse(100, 100, Coordinate.Rel), undefined)
+  t.is(enigo.moveMouse(100, 100, Coordinate.Abs), undefined)
+  t.is(enigo.button(MouseButton.Right, Direction.Click), undefined)
+  t.is(enigo.button(MouseButton.Left, Direction.Press), undefined)
+  t.is(enigo.button(MouseButton.Middle, Direction.Release), undefined)
+  t.is(enigo.scroll(100, Axis.Vertical), undefined)
+  t.is(enigo.text('hi'), undefined)
+  t.is(enigo.key(Key.Return, Direction.Click), undefined)
 
-  t.is(moveMouseRel(x, y), undefined)
-  t.is(moveMouseAbs(x, y), undefined)
-  t.is(mouseClick(button), undefined)
-  t.is(mouseDown(button), undefined)
-  t.is(mouseUp(button), undefined)
-  t.is(mouseScroll(length, isVertical), undefined)
+  const location = enigo.location()
+  t.is(typeof location.x, 'number')
+  t.is(typeof location.y, 'number')
+
+  const display = enigo.mainDisplay()
+  t.true(display.width > 0)
+  t.true(display.height > 0)
+})
+
+test('Enigo.isKeySupported reflects the current platform', (t) => {
+  t.true(Enigo.isKeySupported(Key.Return))
+})
+
+test('calling an unsupported key throws instead of failing silently', (t) => {
+  const enigo = new Enigo()
+  const unsupported = ([Key.Num0, Key.MissionControl] as Key[]).find((key) => !Enigo.isKeySupported(key))
+
+  t.truthy(unsupported)
+  t.throws(() => enigo.key(unsupported as Key, Direction.Click))
 })

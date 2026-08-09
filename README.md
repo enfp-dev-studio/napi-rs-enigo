@@ -4,8 +4,8 @@ A Node.js wrapper for the Enigo Rust library, providing a native interface for s
 
 ## Features
 
-- [x] Simulate mouse events (move, click, scroll).
-- [ ] Simulate keyboard events (press, release, type).
+- [x] Simulate mouse events (move, click, scroll, location, display size).
+- [x] Simulate keyboard events (press, release, type, raw keycodes).
 
 ## Requirements
 
@@ -22,23 +22,33 @@ yarn add @enfpdev/napi-rs-enigo
 
 ## Usage
 
+`Enigo` holds one persistent connection to the platform's input backend —
+create an instance once and reuse it, rather than constructing one per call.
+
 ```typescript
-import {
-  moveMouseRel,
-  moveMouseAbs,
-  mouseClick,
-  mouseDown,
-  mouseUp,
-  mouseScroll
-} from "napi-rs-enigo"
+import { Enigo, Key, MouseButton, Direction, Coordinate, Axis } from '@enfpdev/napi-rs-enigo'
 
-moveMouseRel(100, 100));
-moveMouseAbs(100, 100));
-mouseClick('rigtht'));
-mouseDown('left'));
-mouseUp('middle'));
-mouseScroll(100, true));
+const enigo = new Enigo()
 
+enigo.moveMouse(100, 100, Coordinate.Rel)
+enigo.moveMouse(100, 100, Coordinate.Abs)
+enigo.button(MouseButton.Right, Direction.Click)
+enigo.button(MouseButton.Left, Direction.Press)
+enigo.button(MouseButton.Middle, Direction.Release)
+enigo.scroll(100, Axis.Vertical)
+
+enigo.location() // -> { x, y }
+enigo.mainDisplay() // -> { width, height }
+
+enigo.text('hello world')
+enigo.key(Key.Return, Direction.Click)
+
+// Key covers every key enigo knows about across all platforms, so a given
+// variant may not exist on the platform you're running on. Check first,
+// or catch the error it throws:
+if (Enigo.isKeySupported(Key.MissionControl)) {
+  enigo.key(Key.MissionControl, Direction.Click)
+}
 ```
 
 ## Contribute

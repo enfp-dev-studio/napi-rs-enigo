@@ -42,14 +42,37 @@ enigo.mainDisplay() // -> { width, height }
 
 enigo.text('hello world')
 enigo.key(Key.Return, Direction.Click)
+enigo.rawKey(36, Direction.Click) // hardware keycode, bypasses keysym/layout mapping
+enigo.unicodeKey('é', Direction.Click) // single Unicode char, for text() use `text` instead
+enigo.otherKey(0x1234, Direction.Click) // platform-native key code (keysym / VK / KeyCode)
 
-// Key covers every key enigo knows about across all platforms, so a given
-// variant may not exist on the platform you're running on. Check first,
-// or catch the error it throws:
+// Key and MouseButton cover every variant enigo knows about across all
+// platforms, so a given variant may not exist on the platform you're
+// running on. Check first, or catch the error it throws:
 if (Enigo.isKeySupported(Key.MissionControl)) {
   enigo.key(Key.MissionControl, Direction.Click)
 }
+if (Enigo.isButtonSupported(MouseButton.Back)) {
+  enigo.button(MouseButton.Back, Direction.Click)
+}
 ```
+
+### Upgrading from 1.1.x
+
+1.2.0 replaces the six free functions (`moveMouseRel`, `moveMouseAbs`,
+`mouseClick`, `mouseDown`, `mouseUp`, `mouseScroll`) with the `Enigo` class
+above — each of those functions used to open a fresh connection to the
+platform's input backend on every call. There's no compatibility shim; update
+call sites to construct one `Enigo` instance and call its methods instead.
+
+| 1.1.x                             | 1.2.0                                                                |
+| --------------------------------- | -------------------------------------------------------------------- |
+| `moveMouseRel(x, y)`              | `enigo.moveMouse(x, y, Coordinate.Rel)`                              |
+| `moveMouseAbs(x, y)`              | `enigo.moveMouse(x, y, Coordinate.Abs)`                              |
+| `mouseClick(button)`              | `enigo.button(MouseButton.X, Direction.Click)`                       |
+| `mouseDown(button)`               | `enigo.button(MouseButton.X, Direction.Press)`                       |
+| `mouseUp(button)`                 | `enigo.button(MouseButton.X, Direction.Release)`                     |
+| `mouseScroll(length, isVertical)` | `enigo.scroll(length, isVertical ? Axis.Vertical : Axis.Horizontal)` |
 
 ## Contribute
 

@@ -49,23 +49,23 @@ export declare class Enigo {
   static isButtonSupported(button: MouseButton): boolean
 }
 
-export declare const enum Axis {
+export declare enum Axis {
   Horizontal = 'Horizontal',
   Vertical = 'Vertical',
 }
 
-export declare const enum Coordinate {
+export declare enum Coordinate {
   Abs = 'Abs',
   Rel = 'Rel',
 }
 
-export declare const enum Direction {
+export declare enum Direction {
   Press = 'Press',
   Release = 'Release',
   Click = 'Click',
 }
 
-export declare const enum Key {
+export declare enum Key {
   Num0 = 'Num0',
   Num1 = 'Num1',
   Num2 = 'Num2',
@@ -357,7 +357,7 @@ export declare const enum Key {
   Zoom = 'Zoom',
 }
 
-export declare const enum MouseButton {
+export declare enum MouseButton {
   Left = 'Left',
   Middle = 'Middle',
   Right = 'Right',

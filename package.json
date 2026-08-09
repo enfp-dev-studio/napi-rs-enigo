@@ -36,9 +36,9 @@
   "scripts": {
     "artifacts": "napi artifacts",
     "bench": "node -r @swc-node/register benchmark/bench.ts",
-    "build": "napi build --platform --release --pipe \"prettier -w\"",
-    "build:scope": "napi build --release --platform --js-package-name @enfpdev/napi-rs-enigo",
-    "build:debug": "napi build --platform --pipe \"prettier -w\"",
+    "build": "napi build --platform --release --no-const-enum --runtime-string-enum --pipe \"prettier -w\"",
+    "build:scope": "napi build --release --platform --no-const-enum --runtime-string-enum --js-package-name @enfpdev/napi-rs-enigo",
+    "build:debug": "napi build --platform --no-const-enum --runtime-string-enum --pipe \"prettier -w\"",
     "format": "run-p format:prettier format:rs format:toml",
     "format:prettier": "prettier . -w",
     "format:toml": "taplo format",

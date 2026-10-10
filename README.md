@@ -7,18 +7,42 @@ A Node.js wrapper for the Enigo Rust library, providing a native interface for s
 - [x] Simulate mouse events (move, click, scroll, location, display size).
 - [x] Simulate keyboard events (press, release, type, raw keycodes).
 
+## Published platforms
+
+| Platform                      | Prebuilt package | `buttonAt` / `scrollAt` |
+| ----------------------------- | ---------------- | ----------------------- |
+| macOS Apple Silicon (arm64)   | Yes              | Yes                     |
+| macOS Intel (x64)             | Yes              | Yes                     |
+| macOS universal (arm64 + x64) | Yes              | Yes                     |
+| Windows x64 (MSVC)            | Yes              | No                      |
+
+Linux and Windows ARM64 binaries are not published by this package. Existing
+mouse and keyboard methods remain available on the published platforms;
+individual key and button support still varies by platform.
+
 ## Requirements
 
-- Node.js 10 or later
-- Rust toolchain
+- Release 1.2.2 is tested with Node.js 20 and 22. The existing `package.json`
+  engine range remains `>= 10`; older Node.js versions were not revalidated
+  for this release.
+- A Rust toolchain is only needed when building from source. Normal installation
+  uses the prebuilt package for your platform.
 
 ## Installation
 
-Use npm to install the library:
+Install from the npm registry:
 
 ```shell
-yarn add @enfpdev/napi-rs-enigo
+npm install @enfpdev/napi-rs-enigo
 ```
+
+## Validation
+
+CI builds macOS arm64, macOS x64, and Windows x64 bindings and tests them with
+Node.js 20 and 22. The universal macOS binary combines the two macOS builds.
+Five macOS Rust tests check positioned event construction without posting input.
+Binding tests check API availability and calls; they do not verify that a target
+application receives a click or scroll. That requires an interactive desktop test.
 
 ## Usage
 

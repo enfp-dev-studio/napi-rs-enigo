@@ -5,6 +5,8 @@ use napi::{Error, Result, Status};
 use napi_derive::napi;
 
 mod keys;
+#[cfg(target_os = "macos")]
+mod macos_input;
 pub use keys::{Key, MouseButton};
 
 fn to_napi_err(e: impl std::fmt::Display) -> Error {
@@ -81,6 +83,8 @@ pub struct Size {
 #[napi]
 pub struct Enigo {
   inner: EnigoImpl,
+  #[cfg(target_os = "macos")]
+  positioned_input: macos_input::PositionedInput,
 }
 
 #[napi]
@@ -88,7 +92,13 @@ impl Enigo {
   #[napi(constructor)]
   pub fn new() -> Result<Self> {
     let inner = EnigoImpl::new(&Settings::default()).map_err(to_napi_err)?;
-    Ok(Self { inner })
+    #[cfg(target_os = "macos")]
+    let positioned_input = macos_input::PositionedInput::new(inner.get_marker_value())?;
+    Ok(Self {
+      inner,
+      #[cfg(target_os = "macos")]
+      positioned_input,
+    })
   }
 
   /// Move the mouse cursor. `coordinate` selects whether `x`/`y` are
@@ -188,5 +198,33 @@ impl Enigo {
   #[napi]
   pub fn is_button_supported(button: MouseButton) -> bool {
     button.is_supported()
+  }
+}
+
+#[cfg(target_os = "macos")]
+#[napi]
+impl Enigo {
+  /// macOS only: post a mouse button event at explicit Quartz global coordinates.
+  /// Unlike moveMouse followed by button, this does not read a pending cursor move.
+  /// clickCount defaults to 1; pass 2 for the second click of a double click.
+  #[napi]
+  pub fn button_at(
+    &mut self,
+    x: i32,
+    y: i32,
+    button: MouseButton,
+    direction: Direction,
+    click_count: Option<u32>,
+  ) -> Result<()> {
+    self
+      .positioned_input
+      .button_at(x, y, button, direction, click_count.unwrap_or(1))
+  }
+
+  /// macOS only: scroll at explicit Quartz global coordinates, using the same
+  /// line units and direction as scroll(). Does not depend on cursor location.
+  #[napi]
+  pub fn scroll_at(&mut self, x: i32, y: i32, length: i32, axis: Axis) -> Result<()> {
+    self.positioned_input.scroll_at(x, y, length, axis)
   }
 }

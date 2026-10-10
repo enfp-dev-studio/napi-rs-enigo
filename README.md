@@ -57,6 +57,26 @@ if (Enigo.isButtonSupported(MouseButton.Back)) {
 }
 ```
 
+### Positioned mouse events on macOS
+
+Version 1.2.2 adds macOS-only `buttonAt` and `scrollAt` methods. Coordinates are
+Quartz global display coordinates, including negative coordinates for displays
+to the left of or above the main display. The event carries its destination
+directly, so a preceding asynchronous cursor move is not required.
+
+```typescript
+if (process.platform === 'darwin') {
+  enigo.buttonAt(-700, 400, MouseButton.Left, Direction.Click)
+  enigo.buttonAt(-700, 400, MouseButton.Left, Direction.Click, 2) // second click
+  enigo.scrollAt(-700, 760, 4, Axis.Vertical)
+}
+```
+
+`clickCount` defaults to 1 and must be positive. `scrollAt` preserves the line
+units and direction of `scroll`. These methods use the application's existing
+input permission; they do not request or change permissions. Existing methods
+and the Windows implementation are unchanged.
+
 ### Upgrading from 1.1.x
 
 1.2.0 replaces the six free functions (`moveMouseRel`, `moveMouseAbs`,

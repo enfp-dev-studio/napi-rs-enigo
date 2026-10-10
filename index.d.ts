@@ -47,6 +47,23 @@ export declare class Enigo {
   static isKeySupported(key: Key): boolean
   /** Whether `button` is implemented on the current platform. */
   static isButtonSupported(button: MouseButton): boolean
+  /**
+   * macOS only: post a mouse button event at explicit Quartz global coordinates.
+   * Unlike moveMouse followed by button, this does not read a pending cursor move.
+   * clickCount defaults to 1; pass 2 for the second click of a double click.
+   */
+  buttonAt(
+    x: number,
+    y: number,
+    button: MouseButton,
+    direction: Direction,
+    clickCount?: number | undefined | null,
+  ): void
+  /**
+   * macOS only: scroll at explicit Quartz global coordinates, using the same
+   * line units and direction as scroll(). Does not depend on cursor location.
+   */
+  scrollAt(x: number, y: number, length: number, axis: Axis): void
 }
 
 export declare enum Axis {

@@ -34,3 +34,10 @@ test('calling an unsupported key throws instead of failing silently', (t) => {
   t.truthy(unsupported)
   t.throws(() => enigo.key(unsupported as Key, Direction.Click))
 })
+
+test('positioned input API is available only on macOS', (t) => {
+  const prototype = Enigo.prototype as unknown as Record<string, unknown>
+  const expected = process.platform === 'darwin' ? 'function' : 'undefined'
+  t.is(typeof prototype.buttonAt, expected)
+  t.is(typeof prototype.scrollAt, expected)
+})
